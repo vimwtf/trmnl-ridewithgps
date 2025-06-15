@@ -12,7 +12,7 @@ custom_fields:
   name: About This Plugin
   field_type: author_bio
   description: Displays distance statistics for public bike rides from <a href="https://ridewithgps.com/">Ride With GPS</a>.
-  github_url: https://git.vim.wtf/wq/trmnl-ridewithgps
+  github_url: https://github.com/vimwtf/trmnl-ridewithgps
   learn_more_url: https://jwq.lol
 - keyname: user_id
   field_type: number
