@@ -1,0 +1,125 @@
+{% liquid
+  assign units = trmnl.plugin_settings.custom_fields_values.units
+  assign goal_week = trmnl.plugin_settings.custom_fields_values.goal_week
+  assign goal_month = trmnl.plugin_settings.custom_fields_values.goal_month
+  assign goal_year = trmnl.plugin_settings.custom_fields_values.goal_year
+
+  if trmnl.plugin_settings.custom_fields_values.display_name != blank
+    assign username = trmnl.plugin_settings.custom_fields_values.display_name
+  else
+    assign username = user.name
+  endif
+
+  if units == "miles"
+    assign conversion_factor = 1609.344
+    assign units_short = "mi"
+  else
+    assign conversion_factor = 1000
+    assign units_short = "km"
+  endif
+
+  assign distance_week = week.distance_sum | divided_by: conversion_factor | round: 1
+  assign distance_month = month.distance_sum | divided_by: conversion_factor | round: 1
+  assign distance_year = year.distance_sum | divided_by: conversion_factor | round: 1
+
+  if goal_week != '0'
+    assign progress_week = distance_week | divided_by: goal_week | times: 100
+  endif
+  if goal_month != '0'
+    assign progress_month = distance_month | divided_by: goal_month | times: 100
+  endif
+  if goal_year != '0'
+    assign progress_year = distance_year | divided_by: goal_year | times: 100
+  endif
+%}
+
+<style>
+  .progress-container {
+    width: 98%;
+    height: 25%;
+    outline: 1px solid;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+
+  .progress {
+    height: 100%;
+    background-color: black;
+  }
+
+  .progress_week {
+    width: {{ progress_week }}%;
+  }
+
+  .progress_month {
+    width: {{ progress_month }}%;
+  }
+
+  .progress_year {
+    width: {{ progress_year }}%;
+  }
+</style>
+
+{% template stats %}
+  <div class="item">
+    <div class="meta"></div>
+    <div class="content" style="width:{{ value_width }}">
+      <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ distance_week }}</span>
+      <span class="label">{{ units | capitalize }} last 7 days
+      </span>
+    </div>
+    {% if goal_week != '0' %}
+    <div class="content">
+      <div class="progress-container bg--gray-6">
+        <div class="progress progress_week"></div>
+      </div>
+      <span class="label">
+        / {{ goal_week | number_with_delimiter }} {{ units_short }}
+      </span>
+    </div>
+    {% endif %}
+  </div>
+  <div class="item">
+    <div class="meta"></div>
+    <div class="content" style="width:{{ value_width }}">
+      <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ distance_month }}</span>
+      <span class="label">{{ units | capitalize }} last 30 days</span>
+    </div>
+    {% if goal_month != '0' %}
+    <div class="content">
+      <div class="progress-container bg--gray-6">
+        <div class="progress progress_month"></div>
+      </div>
+      <span class="label">
+        / {{ goal_month | number_with_delimiter }} {{ units_short }}
+      </span>
+    </div>
+    {% endif %}
+  </div>
+  <div class="item">
+    <div class="meta"></div>
+    <div class="content" style="width:{{ value_width }}">
+      <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ distance_year }}</span>
+      <span class="label">{{ units | capitalize}} last 365 days</span>
+    </div>
+    {% if goal_year != '0' %}
+    <div class="content">
+      <div class="progress-container bg--gray-6">
+        <div class="progress progress_year"></div>
+      </div>
+      <span class="label">
+        / {{ goal_year | number_with_delimiter }} {{ units_short }}
+      </span>
+    </div>
+    {% endif %}
+  </div>
+{% endtemplate %}
+
+{% template title_bar %}
+<div class="title_bar">
+  <img class="image" src="https://res.jwq.lol/img/ridewithgps.svg">
+  <span class="title">{{ trmnl.plugin_settings.instance_name }}</span>
+  <span class="instance">{{ username }}</span>
+</div>
+{% endtemplate %}

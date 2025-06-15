@@ -1,2 +1,4 @@
-# trmnl-ridewithgps
+# TRMNL Ride With GPS Plugin
+
+
 

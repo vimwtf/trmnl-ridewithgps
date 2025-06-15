@@ -1,0 +1,16 @@
+<div class="layout layout--col gap--space-between">
+  {% render "stats",
+    distance_week: distance_week,
+    distance_month: distance_month,
+    distance_year: distance_year,
+    goal_week: goal_week,
+    goal_month: goal_month,
+    goal_year: goal_year,
+    units: units,
+    units_short: units_short,
+    trmnl: trmnl,
+    value_size: "xlarge",
+    value_width: "40%"
+  %}
+</div>
+{% render "title_bar", trmnl: trmnl, username: username %}

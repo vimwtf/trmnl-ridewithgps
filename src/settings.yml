@@ -1,0 +1,55 @@
+---
+strategy: polling
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
+polling_verb: get
+polling_url: https://ridewithgps.com/users/{{ user_id }}/summary.json?include_week=1&include_month=1&include_year=1
+polling_headers: ''
+id: 96060
+custom_fields:
+- keyname: doesnt_matter
+  name: About This Plugin
+  field_type: author_bio
+  description: Displays distance statistics for public bike rides from <a href="https://ridewithgps.com/">Ride With GPS</a>.
+  github_url: https://git.vim.wtf/wq/trmnl-ridewithgps
+  learn_more_url: https://jwq.lol
+- keyname: user_id
+  field_type: number
+  placeholder: '0000000'
+  name: User ID
+  description: Numerical user ID from your Ride With GPS profile URL
+- keyname: display_name
+  field_type: string
+  placeholder: John
+  name: User name
+  description: Optional display name to override the RideWithGPS username
+  optional: true
+- keyname: units
+  field_type: select
+  name: Distance units
+  options:
+  - Miles: miles
+  - Kilometers: kilometers
+  default: miles
+  description: Distance units to use for display
+- keyname: goal_week
+  field_type: number
+  default: 0
+  placeholder: 0
+  name: Weekly Distance Goal
+  description: This is a 7-day rolling window, not a calendar week. '0' to disable this goal.
+- keyname: goal_month
+  field_type: number
+  default: 0
+  placeholder: 0
+  name: Monthly Distance Goal
+  description: This is a 30-day rolling window, not a calendar month. '0' to disable this goal.
+- keyname: goal_year
+  field_type: number
+  default: 0
+  placeholder: 0
+  name: Yearly Distance Goal
+  description: This is a 365-day rolling window, not a calendar year. '0' to disable this goal.
+name: Ride With GPS
+refresh_interval: 360
