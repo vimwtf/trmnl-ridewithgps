@@ -11,7 +11,7 @@ custom_fields:
 - keyname: doesnt_matter
   name: About This Plugin
   field_type: author_bio
-  description: Displays distance statistics for public bike rides from <a href="https://ridewithgps.com/">Ride With GPS</a>.
+  description: Displays statistics for public bike rides from <a href="https://ridewithgps.com/">Ride With GPS</a>.
   github_url: https://github.com/vimwtf/trmnl-ridewithgps
   learn_more_url: https://jwq.lol
 - keyname: user_id
@@ -38,18 +38,18 @@ custom_fields:
   default: 0
   placeholder: 0
   name: Weekly Distance Goal
-  description: This is a 7-day rolling window, not a calendar week. '0' to disable this goal.
+  description: This is a 7-day rolling window, not a calendar week. '0' to disable this goal and display ride count and moving time instead.
 - keyname: goal_month
   field_type: number
   default: 0
   placeholder: 0
   name: Monthly Distance Goal
-  description: This is a 30-day rolling window, not a calendar month. '0' to disable this goal.
+  description: This is a 30-day rolling window, not a calendar month. '0' to disable this goal and display ride count and moving time instead.
 - keyname: goal_year
   field_type: number
   default: 0
   placeholder: 0
   name: Yearly Distance Goal
-  description: This is a 365-day rolling window, not a calendar year. '0' to disable this goal.
+  description: This is a 365-day rolling window, not a calendar year. '0' to disable this goal and display ride count and moving time instead.
 name: Ride With GPS
 refresh_interval: 360
