@@ -67,6 +67,10 @@
   .progress_year {
     width: {{ progress_year }}%;
   }
+
+  .stats {
+    align-items: flex-end !important;
+  }
 </style>
 
 {% template stats %}
@@ -79,18 +83,18 @@
       <span class="label">{{ units | capitalize }} (7 days)</span>
     </div>
     {% if goal_week != '0' %}
-    <div class="content">
+    <div class="content stats">
       <div class="progress-container bg--gray-6">
         <div class="progress progress_week"></div>
       </div>
       <span class="label">/ {{ goal_week | number_with_delimiter }} {{ units_short }}</span>
     </div>
     {% else %}
-    <div class="content">
+    <div class="content stats">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ hours_week }}</span>
       <span class="label">Hours</span>
     </div>
-    <div class="content">
+    <div class="content stats">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ rides_week }}</span>
       <span class="label">Rides</span>
     </div>
@@ -105,18 +109,18 @@
       <span class="label">{{ units | capitalize }} (30 days)</span>
     </div>
     {% if goal_month != '0' %}
-    <div class="content">
+    <div class="content stats">
       <div class="progress-container bg--gray-6">
         <div class="progress progress_month"></div>
       </div>
       <span class="label">/ {{ goal_month | number_with_delimiter }} {{ units_short }}</span>
     </div>
      {% else %}
-    <div class="content">
+    <div class="content stats">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ hours_month }}</span>
       <span class="label">Hours</span>
     </div>
-    <div class="content">
+    <div class="content stats">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ rides_month }}</span>
       <span class="label">Rides</span>
     </div>
@@ -131,18 +135,18 @@
       <span class="label">{{ units | capitalize}} (365 days)</span>
     </div>
     {% if goal_year != '0' %}
-    <div class="content">
+    <div class="content stats">
       <div class="progress-container bg--gray-6">
         <div class="progress progress_year"></div>
       </div>
       <span class="label">/ {{ goal_year | number_with_delimiter }} {{ units_short }}</span>
     </div>
     {% else %}
-    <div class="content">
+    <div class="content stats">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ hours_year }}</span>
       <span class="label">Hours</span>
     </div>
-    <div class="content">
+    <div class="content stats">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ rides_year }}</span>
       <span class="label">Rides</span>
     </div>
