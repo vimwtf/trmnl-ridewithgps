@@ -22,6 +22,14 @@
   assign distance_month = month.distance_sum | divided_by: conversion_factor | round: 1
   assign distance_year = year.distance_sum | divided_by: conversion_factor | round: 1
 
+  assign hours_week = week.moving_time_sum | divided_by: 3600.0 | round: 1
+  assign hours_month = month.moving_time_sum | divided_by: 3600.0 | round: 1
+  assign hours_year = year.moving_time_sum | divided_by: 3600.0 | round: 1
+
+  assign rides_week = week.trips_count
+  assign rides_month = month.trips_count
+  assign rides_year = year.trips_count
+
   if goal_week != '0'
     assign progress_week = distance_week | divided_by: goal_week | times: 100
   endif
@@ -63,54 +71,80 @@
 
 {% template stats %}
   <div class="item">
-    <div class="meta"></div>
-    <div class="content" style="width:{{ value_width }}">
+    <div class="meta">
+      <span class="index">7d</span>
+    </div>
+    <div class="content" style="width:{% if goal_week != '0' %}{{ value_width }}{% endif %}">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ distance_week }}</span>
-      <span class="label">{{ units | capitalize }} last 7 days
-      </span>
+      <span class="label">{{ units | capitalize }} (7 days)</span>
     </div>
     {% if goal_week != '0' %}
     <div class="content">
       <div class="progress-container bg--gray-6">
         <div class="progress progress_week"></div>
       </div>
-      <span class="label">
-        / {{ goal_week | number_with_delimiter }} {{ units_short }}
-      </span>
+      <span class="label">/ {{ goal_week | number_with_delimiter }} {{ units_short }}</span>
+    </div>
+    {% else %}
+    <div class="content">
+      <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ hours_week }}</span>
+      <span class="label">Hours</span>
+    </div>
+    <div class="content">
+      <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ rides_week }}</span>
+      <span class="label">Rides</span>
     </div>
     {% endif %}
   </div>
   <div class="item">
-    <div class="meta"></div>
-    <div class="content" style="width:{{ value_width }}">
+    <div class="meta">
+      <span class="index">30d</span>
+    </div>
+    <div class="content" style="width:{% if goal_month != '0' %}{{ value_width }}{% endif %}">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ distance_month }}</span>
-      <span class="label">{{ units | capitalize }} last 30 days</span>
+      <span class="label">{{ units | capitalize }} (30 days)</span>
     </div>
     {% if goal_month != '0' %}
     <div class="content">
       <div class="progress-container bg--gray-6">
         <div class="progress progress_month"></div>
       </div>
-      <span class="label">
-        / {{ goal_month | number_with_delimiter }} {{ units_short }}
-      </span>
+      <span class="label">/ {{ goal_month | number_with_delimiter }} {{ units_short }}</span>
+    </div>
+     {% else %}
+    <div class="content">
+      <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ hours_month }}</span>
+      <span class="label">Hours</span>
+    </div>
+    <div class="content">
+      <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ rides_month }}</span>
+      <span class="label">Rides</span>
     </div>
     {% endif %}
   </div>
   <div class="item">
-    <div class="meta"></div>
-    <div class="content" style="width:{{ value_width }}">
+    <div class="meta">
+      <span class="index">365d</span>
+    </div>
+    <div class="content" style="width:{% if goal_year != '0' %}{{ value_width }}{% endif %}">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ distance_year }}</span>
-      <span class="label">{{ units | capitalize}} last 365 days</span>
+      <span class="label">{{ units | capitalize}} (365 days)</span>
     </div>
     {% if goal_year != '0' %}
     <div class="content">
       <div class="progress-container bg--gray-6">
         <div class="progress progress_year"></div>
       </div>
-      <span class="label">
-        / {{ goal_year | number_with_delimiter }} {{ units_short }}
-      </span>
+      <span class="label">/ {{ goal_year | number_with_delimiter }} {{ units_short }}</span>
+    </div>
+    {% else %}
+    <div class="content">
+      <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ hours_year }}</span>
+      <span class="label">Hours</span>
+    </div>
+    <div class="content">
+      <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ rides_year }}</span>
+      <span class="label">Rides</span>
     </div>
     {% endif %}
   </div>
