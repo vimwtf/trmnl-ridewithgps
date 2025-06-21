@@ -13,7 +13,7 @@ custom_fields:
   field_type: author_bio
   description: Displays statistics for public bike rides from <a href="https://ridewithgps.com/">Ride With GPS</a>.
   github_url: https://github.com/vimwtf/trmnl-ridewithgps
-  learn_more_url: https://jwq.lol
+  learn_more_url: https://buffer.vim.wtf/ride-with-gps-plugin-for-trmnl/
 - keyname: user_id
   field_type: number
   placeholder: '0000000'
