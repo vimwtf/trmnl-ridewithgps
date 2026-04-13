@@ -71,21 +71,31 @@
   }
 
   .stats {
-    align-items: flex-end !important;
+    align-items: center;
+    width: 50%;
+  }
+
+  .stats-progress {
+    align-items: flex-end;
+    width: 100%;
+  }
+
+  .content-left {
+    width: 60%;
   }
 </style>
 
 {% template stats %}
   <div class="item">
     <div class="meta">
-      <span class="index">7d</span>
+
     </div>
-    <div class="content" style="width:{% if goal_week != '0' %}{{ value_width }}{% endif %}">
+    <div class="content content-left">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ distance_week }}</span>
       <span class="label">{{ units | capitalize }} (7 days)</span>
     </div>
     {% if goal_week != '0' %}
-    <div class="content stats">
+    <div class="content stats-progress">
       <div class="progress-container bg--gray-6">
         <div class="progress progress_week"></div>
       </div>
@@ -104,14 +114,14 @@
   </div>
   <div class="item">
     <div class="meta">
-      <span class="index">30d</span>
+
     </div>
-    <div class="content" style="width:{% if goal_month != '0' %}{{ value_width }}{% endif %}">
+    <div class="content content-left">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ distance_month }}</span>
       <span class="label">{{ units | capitalize }} (30 days)</span>
     </div>
     {% if goal_month != '0' %}
-    <div class="content stats">
+    <div class="content stats-progress">
       <div class="progress-container bg--gray-6">
         <div class="progress progress_month"></div>
       </div>
@@ -130,14 +140,14 @@
   </div>
   <div class="item">
     <div class="meta">
-      <span class="index">365d</span>
+
     </div>
-    <div class="content" style="width:{% if goal_year != '0' %}{{ value_width }}{% endif %}">
+    <div class="content content-left">
       <span class="value value--{{ value_size }} value--tnums" data-value-format="true">{{ distance_year }}</span>
-      <span class="label">{{ units | capitalize}} (365 days)</span>
+      <span class="label">{{ units | capitalize}} (year)</span>
     </div>
     {% if goal_year != '0' %}
-    <div class="content stats">
+    <div class="content stats-progress">
       <div class="progress-container bg--gray-6">
         <div class="progress progress_year"></div>
       </div>

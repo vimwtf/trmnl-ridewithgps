@@ -4,8 +4,11 @@ no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: get
+framework_version: 3.0.3
+serverless_language: 
 polling_url: https://ridewithgps.com/users/{{ user_id }}/summary.json?include_week=1&include_month=1&include_year=1
 polling_headers: ''
+polling_body: ''
 id: 96060
 custom_fields:
 - keyname: doesnt_matter
@@ -13,7 +16,7 @@ custom_fields:
   field_type: author_bio
   description: Displays statistics for public bike rides from <a href="https://ridewithgps.com/">Ride With GPS</a>.
   github_url: https://github.com/vimwtf/trmnl-ridewithgps
-  learn_more_url: https://buffer.vim.wtf/ride-with-gps-plugin-for-trmnl/
+  learn_more_url: https://runtimeterror.dev/ride-with-gps-plugin-for-trmnl/
 - keyname: user_id
   field_type: number
   placeholder: '0000000'
@@ -52,4 +55,4 @@ custom_fields:
   name: Yearly Distance Goal
   description: This is a 365-day rolling window, not a calendar year. '0' to disable this goal and display ride count and moving time instead.
 name: Ride With GPS
-refresh_interval: 360
+refresh_interval: 240

@@ -1,5 +1,5 @@
 <div class="layout layout--col gap--space-between">
-  {% render "stats",
+  {% render "stats", 
     distance_week: distance_week,
     distance_month: distance_month,
     distance_year: distance_year,
@@ -14,9 +14,8 @@
     rides_year: rides_year,
     units: units,
     units_short: units_short,
-    trmnl: trmnl,
-    value_size: "regular",
-    value_width: "360px"
+    trmnl: trmnl, 
+    value_size: "regular"
   %}
 </div>
 {% render "title_bar", trmnl: trmnl, username: username %}
